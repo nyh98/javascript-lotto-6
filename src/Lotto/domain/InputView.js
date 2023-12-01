@@ -1,15 +1,18 @@
 import { Console } from '@woowacourse/mission-utils';
+import MESSAGES from './Messages.js';
 
 const INPUT_VIEW = Object.freeze({
   async buyLotto() {
-    const MONEY = await Console.readLineAsync('구입금액을 입력해 주세요. \n');
+    const MONEY = await Console.readLineAsync(MESSAGES.buyLotto);
     this.validateMoney(MONEY);
     return MONEY;
   },
 
   validateMoney(money) {
     if (money % 1000 !== 0) {
-      throw new Error('1000단위로 입력해 주세요');
+      throw new Error(MESSAGES.notOneThousand);
     }
   },
 });
+
+export default INPUT_VIEW;
