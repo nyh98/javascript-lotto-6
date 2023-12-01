@@ -9,8 +9,14 @@ const INPUT_VIEW = Object.freeze({
   },
 
   validateMoney(money) {
+    const notNumber = /[^\d]/g;
+
     if (money % 1000 !== 0) {
       throw new Error(MESSAGES.notOneThousand);
+    }
+
+    if (notNumber.test(money)) {
+      throw new Error(MESSAGES.notNumber);
     }
   },
 });
