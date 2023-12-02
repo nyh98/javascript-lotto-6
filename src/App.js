@@ -15,7 +15,7 @@ class App {
       WIN_NUMBERS,
       BONUS_NUMBER
     );
-    LottoStore.printResult(LOTTO_RESULT);
+    LottoStore.printResult(LOTTO_RESULT, MONEY);
   }
 }
 

@@ -55,9 +55,20 @@ class LottoStore {
     return { firstplace, secondPlace, thirdPlace, fourthPlace, fifthPlace };
   }
 
-  static calculateRevenue(result) {}
+  static calculateRevenue(result, money) {
+    let totalRevenue = 0;
+    totalRevenue += result.firstplace * 2000000000;
+    totalRevenue += result.secondPlace * 30000000;
+    totalRevenue += result.thirdPlace * 1500000;
+    totalRevenue += result.fourthPlace * 50000;
+    totalRevenue += result.fifthPlace * 5000;
 
-  static printResult(result) {
+    const TOTAL_RETURN = ((totalRevenue / money) * 100).toFixed(1);
+    return TOTAL_RETURN;
+  }
+
+  static printResult(result, money) {
+    const TOTAL_RETURN = this.calculateRevenue(result, money);
     Console.print(`당첨 통계\n---`);
     Console.print(`3개 일치 (5,000원) - ${result.fifthPlace}개`);
     Console.print(`4개 일치 (50,000원) - ${result.fourthPlace}개`);
@@ -66,6 +77,7 @@ class LottoStore {
       `5개 일치, 보너스 볼 일치 (30,000,000원) - ${result.secondPlace}개`
     );
     Console.print(`6개 일치 (2,000,000,000원) - ${result.firstplace}개`);
+    Console.print(`총 수익률은 ${TOTAL_RETURN}%입니다.`);
   }
 }
 
