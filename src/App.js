@@ -1,5 +1,12 @@
+import { Console } from '@woowacourse/mission-utils';
+import INPUT_VIEW from './Lotto/domain/InputView.js';
+
 class App {
-  async play() {}
+  async play() {
+    const MONEY = await INPUT_VIEW.buyLotto();
+    const WIN_NUMBERS = await INPUT_VIEW.winNumber();
+    const BONUS_NUMBER = await INPUT_VIEW.bonusNumber(WIN_NUMBERS);
+  }
 }
 
 export default App;

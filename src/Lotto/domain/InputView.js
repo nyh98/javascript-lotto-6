@@ -3,26 +3,52 @@ import MESSAGES from './Messages.js';
 
 const INPUT_VIEW = Object.freeze({
   async buyLotto() {
-    const MONEY = Number(await Console.readLineAsync(MESSAGES.inputMoney));
-    this.validateMoney(MONEY);
-    return MONEY;
+    while (true) {
+      try {
+        const MONEY = Number(await Console.readLineAsync(MESSAGES.inputMoney));
+        this.validateMoney(MONEY);
+
+        return MONEY;
+      } catch (error) {
+        Console.print(`[ERROR]${error}`);
+      }
+    }
   },
 
   async winNumber() {
-    const WIN_NUMBER = await Console.readLineAsync(MESSAGES.inputWinNumber);
-    this.validateWinNumber(WIN_NUMBER);
-    const SPLIT_NUMBER = WIN_NUMBER.split(',');
+    while (true) {
+      try {
+        const WIN_NUMBER = await Console.readLineAsync(MESSAGES.inputWinNumber);
+        this.validateWinNumber(WIN_NUMBER);
+        const SPLIT_NUMBER = WIN_NUMBER.split(',').map((string) =>
+          Number(string)
+        );
+
+        return SPLIT_NUMBER;
+      } catch (error) {
+        Console.print(`[ERROR]${error}`);
+      }
+    }
+  },
+
+  async bonusNumber(winNumber) {
+    while (true) {
+      try {
+        const BONUS_NUMBER = Number(
+          await Console.readLineAsync(MESSAGES.inputBonusNumber)
+        );
+        this.validateBonusNumber(BONUS_NUMBER, winNumber);
+
+        return BONUS_NUMBER;
+      } catch (error) {
+        Console.print(`[ERROR]${error}`);
+      }
+    }
   },
 
   validateMoney(money) {
-    const notNumber = /[^\d]/g;
-
-    if (money % 1000 !== 0) {
+    if (money % 1000 !== 0 || money <= 0) {
       throw new Error(MESSAGES.invalidMoney);
-    }
-
-    if (notNumber.test(money)) {
-      throw new Error(MESSAGES.notNumber);
     }
   },
 
@@ -32,6 +58,18 @@ const INPUT_VIEW = Object.freeze({
 
     if (!validNumber.test(winNumber)) {
       throw new Error(MESSAGES.invalidWinNumber);
+    }
+  },
+
+  validateBonusNumber(bonusNumber, winNumber) {
+    const validNumber = /^([1-9]|[1-3][0-9]|4[0-5])$/g;
+
+    if (!validNumber.test(bonusNumber)) {
+      throw new Error(MESSAGES.invaludBonusNumber);
+    }
+
+    if (winNumber.includes(bonusNumber)) {
+      throw new Error(MESSAGES.overLappWithWinNumber);
     }
   },
 });
