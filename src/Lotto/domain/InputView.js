@@ -2,7 +2,7 @@ import { Console } from '@woowacourse/mission-utils';
 import MESSAGES from './Messages.js';
 
 const INPUT_VIEW = Object.freeze({
-  async buyLotto() {
+  async money() {
     while (true) {
       try {
         const MONEY = Number(await Console.readLineAsync(MESSAGES.inputMoney));

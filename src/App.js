@@ -1,12 +1,13 @@
-import { Console } from '@woowacourse/mission-utils';
 import INPUT_VIEW from './Lotto/domain/InputView.js';
-import Utility from './Lotto/domain/utility/utility.js';
+import LottoStore from './Lotto/domain/LottoStore.js';
 
 class App {
   async play() {
-    const MONEY = await INPUT_VIEW.buyLotto();
+    const MONEY = await INPUT_VIEW.money();
     const WIN_NUMBERS = await INPUT_VIEW.winNumber();
     const BONUS_NUMBER = await INPUT_VIEW.bonusNumber(WIN_NUMBERS);
+
+    const LOTTO = LottoStore.buyLotto(MONEY);
   }
 }
 
