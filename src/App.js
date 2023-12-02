@@ -7,7 +7,7 @@ class App {
     const WIN_NUMBERS = await INPUT_VIEW.winNumber();
     const BONUS_NUMBER = await INPUT_VIEW.bonusNumber(WIN_NUMBERS);
 
-    const LOTTO = LottoStore.buyLotto(MONEY);
+    const LOTTOS = LottoStore.buyLotto(MONEY);
   }
 }
 

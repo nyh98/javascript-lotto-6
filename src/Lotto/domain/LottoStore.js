@@ -18,6 +18,40 @@ class LottoStore {
     }
     return LOTTOS;
   }
+
+  static getResult(lottos, winNumber, bonusNumber) {
+    let firstplace = 0;
+    let secondPlace = 0;
+    let thirdPlace = 0;
+    let fourthPlace = 0;
+    let fifthPlace = 0;
+    let nothing = 0;
+    lottos.forEach((lotto) => {
+      const COUNT = lotto.getRank(winNumber, bonusNumber);
+
+      switch (COUNT) {
+        case 1:
+          firstplace++;
+          break;
+        case 2:
+          secondPlace++;
+          break;
+        case 3:
+          thirdPlace++;
+          break;
+        case 4:
+          fourthPlace++;
+          break;
+        case 5:
+          fifthPlace++;
+          break;
+        default:
+          nothing++;
+          break;
+      }
+    });
+    return { firstplace, secondPlace, thirdPlace, fourthPlace, fifthPlace };
+  }
 }
 
 export default LottoStore;
