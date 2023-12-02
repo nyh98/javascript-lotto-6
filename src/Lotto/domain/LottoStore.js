@@ -28,7 +28,6 @@ class LottoStore {
     let nothing = 0;
     lottos.forEach((lotto) => {
       const COUNT = lotto.getRank(winNumber, bonusNumber);
-
       switch (COUNT) {
         case 1:
           firstplace++;
@@ -47,7 +46,6 @@ class LottoStore {
           break;
         default:
           nothing++;
-          break;
       }
     });
     return { firstplace, secondPlace, thirdPlace, fourthPlace, fifthPlace };
