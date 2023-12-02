@@ -7,6 +7,7 @@ const INPUT_VIEW = Object.freeze({
       try {
         const MONEY = Number(await Console.readLineAsync(MESSAGES.inputMoney));
         this.validateMoney(MONEY);
+        Console.print('');
 
         return MONEY;
       } catch (error) {
@@ -23,6 +24,7 @@ const INPUT_VIEW = Object.freeze({
         const SPLIT_NUMBER = WIN_NUMBER.split(',').map((string) =>
           Number(string)
         );
+        Console.print('');
 
         return SPLIT_NUMBER;
       } catch (error) {
@@ -38,6 +40,7 @@ const INPUT_VIEW = Object.freeze({
           await Console.readLineAsync(MESSAGES.inputBonusNumber)
         );
         this.validateBonusNumber(BONUS_NUMBER, winNumber);
+        Console.print('');
 
         return BONUS_NUMBER;
       } catch (error) {

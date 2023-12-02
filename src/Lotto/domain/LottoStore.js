@@ -1,4 +1,4 @@
-import { Random } from '@woowacourse/mission-utils';
+import { Console, Random } from '@woowacourse/mission-utils';
 import Lotto from './Lotto.js';
 
 class LottoStore {
@@ -11,11 +11,15 @@ class LottoStore {
   }
 
   static buyLotto(money) {
+    const COUNT = money / 1000;
+    Console.print(`${COUNT}개를 구매했습니다.`);
     const LOTTOS = [];
-    for (let i = 0; i < money / 1000; i++) {
+    for (let i = 0; i < COUNT; i++) {
       const LOTTO = new Lotto(this.generatedLottoNumber());
+      LOTTO.printNumbers();
       LOTTOS.push(LOTTO);
     }
+    Console.print('');
     return LOTTOS;
   }
 
@@ -49,6 +53,17 @@ class LottoStore {
       }
     });
     return { firstplace, secondPlace, thirdPlace, fourthPlace, fifthPlace };
+  }
+
+  static printResult(result) {
+    Console.print(`당첨 통계\n---`);
+    Console.print(`3개 일치 (5,000원) - ${result.fifthPlace}개`);
+    Console.print(`4개 일치 (50,000원) - ${result.fourthPlace}개`);
+    Console.print(`5개 일치 (1,500,000원) - ${result.thirdPlace}개`);
+    Console.print(
+      `5개 일치, 보너스 볼 일치 (30,000,000원) - ${result.secondPlace}개`
+    );
+    Console.print(`6개 일치 (2,000,000,000원) - ${result.firstplace}개`);
   }
 }
 
