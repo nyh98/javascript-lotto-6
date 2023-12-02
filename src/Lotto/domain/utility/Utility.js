@@ -7,3 +7,6 @@ class Utility {
     return RANDOM_NUMBER;
   }
 }
+const q = Utility.generatedRandomNumber();
+console.log(q);
+export default Utility;

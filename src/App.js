@@ -1,5 +1,6 @@
 import { Console } from '@woowacourse/mission-utils';
 import INPUT_VIEW from './Lotto/domain/InputView.js';
+import Utility from './Lotto/domain/utility/utility.js';
 
 class App {
   async play() {
