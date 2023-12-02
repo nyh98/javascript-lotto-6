@@ -55,6 +55,8 @@ class LottoStore {
     return { firstplace, secondPlace, thirdPlace, fourthPlace, fifthPlace };
   }
 
+  static calculateRevenue(result) {}
+
   static printResult(result) {
     Console.print(`당첨 통계\n---`);
     Console.print(`3개 일치 (5,000원) - ${result.fifthPlace}개`);

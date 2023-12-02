@@ -5,7 +5,9 @@ class App {
   async play() {
     const MONEY = await INPUT_VIEW.money();
     const LOTTOS = LottoStore.buyLotto(MONEY);
+
     const WIN_NUMBERS = await INPUT_VIEW.winNumber();
+
     const BONUS_NUMBER = await INPUT_VIEW.bonusNumber(WIN_NUMBERS);
 
     const LOTTO_RESULT = LottoStore.getResult(
