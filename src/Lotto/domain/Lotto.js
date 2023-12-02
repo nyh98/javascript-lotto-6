@@ -53,7 +53,8 @@ class Lotto {
   }
 
   printNumbers() {
-    Console.print(this.#numbers);
+    Console.print(`[${this.#numbers.join(', ')}]`);
   }
 }
+
 export default Lotto;
